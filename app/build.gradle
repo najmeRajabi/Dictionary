@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -29,6 +31,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+
 }
 
 dependencies {
@@ -42,8 +48,24 @@ dependencies {
 
     def room_version = "2.4.2"
 
+    // Room components
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    implementation "androidx.activity:activity-ktx:$rootProject.activityVersion"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
+
+    // Kotlin components
+    //noinspection GradleDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
