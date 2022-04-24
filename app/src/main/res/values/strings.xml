@@ -7,4 +7,7 @@
     <string name="example">example</string>
     <string name="synonyms">synonyms</string>
     <string name="save">save</string>
+    <string name="edit">ویرایش</string>
+    <string name="delete">حذف کلمه</string>
+    <string name="detail">جزییات</string>
 </resources>

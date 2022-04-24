@@ -50,59 +50,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imv_change_mode"/>
 
-        <TextView
-            android:id="@+id/txv_en"
-            android:text="@string/english"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_view_home"
-            style="@style/txv_home_style" />
-        <TextView
-            android:id="@+id/txv_fa"
-            android:text="@string/persian"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_en"
-            style="@style/txv_home_style" />
-        <TextView
-            android:id="@+id/txv_synonyms"
-            android:text="@string/synonyms"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_fa"
-            style="@style/txv_home_style" />
-        <TextView
-            android:id="@+id/txv_example"
-            android:text="@string/example"
-            android:verticalScrollbarPosition="defaultPosition"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_synonyms"
-            style="@style/txv_home_style" />
-
-        <ImageButton
-            android:id="@+id/imv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="30dp"
-            android:minWidth="30dp"
-            android:src="@drawable/before"
-            android:background="@drawable/bg_circle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_example"
-            android:layout_margin="18dp"/>
-
-        <ImageButton
-            android:id="@+id/imv_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/next"
-            android:minHeight="30dp"
-            android:minWidth="30dp"
-            android:background="@drawable/bg_circle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_example"
-            android:layout_margin="18dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -113,8 +69,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/add"
-        android:backgroundTint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/detail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
