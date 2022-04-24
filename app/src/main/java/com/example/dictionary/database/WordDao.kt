@@ -21,4 +21,7 @@ interface WordDao {
     @Query("SELECT * FROM Word WHERE en LIKE :en")
     fun findEnWord(en : String):Word
 
+    @Update
+    fun updateWord (word: Word)
+
 }
