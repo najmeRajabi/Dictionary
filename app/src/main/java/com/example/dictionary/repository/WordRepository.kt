@@ -32,4 +32,7 @@ object WordRepository {
     fun delete (word: Word) {
         wordDao?.delete(word)
     }
+    fun update (word: Word){
+        wordDao?.updateWord(word)
+    }
 }
