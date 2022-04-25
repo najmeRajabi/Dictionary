@@ -50,10 +50,10 @@ object WordRepository {
             Word(4,"fa 4", "en 4" , "synon 4", "example 4"),
             Word(5,"fa 5", "en 5" , "synon 5", "example 5"),
             Word(6,"fa 6", "en 6" , "synon 6", "example 6"),
-            Word(7,"fa 6", "en 6" , "synon 6", "example 6"),
-            Word(8,"fa 6", "en 6" , "synon 6", "example 6"),
-            Word(9,"fa 6", "en 6" , "synon 6", "example 6"),
-            Word(10,"fa 6", "en 6" , "synon 6", "example 6")
+            Word(7,"fa 7", "en 6" , "synon 6", "example 6"),
+            Word(8,"fa 8", "en 6" , "synon 6", "example 6"),
+            Word(9,"fa 9", "en 6" , "synon 6", "example 6"),
+            Word(10,"fa 10", "en 10" , "synon 6", "example 6")
         )
     }
 }

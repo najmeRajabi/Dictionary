@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.dictionary.R
 import com.example.dictionary.adaptor.WordAdaptor
-import com.example.dictionary.database.Word
 import com.example.dictionary.databinding.FragmentHomeBinding
 import com.example.dictionary.repository.WordViewModel
 
@@ -47,7 +45,9 @@ class HomeFragment : Fragment() {
         val recyclerViewWord = binding.recyclerWord
         val adapter = WordAdaptor(arrayListOf()){
             word ->
-            findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
+            val id = word.id
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(id))
+//            findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
         }
 
         vModel.wordList?.observe(requireActivity()){
