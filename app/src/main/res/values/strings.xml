@@ -10,4 +10,6 @@
     <string name="edit">ویرایش</string>
     <string name="delete">حذف کلمه</string>
     <string name="detail">جزییات</string>
+    <string name="error_empty">\" یک کلمه بنویسید: \"</string>
+    <string name="empty">خالی</string>
 </resources>
