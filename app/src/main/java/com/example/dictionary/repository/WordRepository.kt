@@ -22,6 +22,9 @@ object WordRepository {
     fun getAll(): LiveData<List<Word>>? {
         return wordDao?.getAll()
     }
+    fun getWord(id: Int): Word? {
+        return wordDao?.getWord(id)
+    }
 
     fun findFa (fa :String): Word? {
         return wordDao?.findFaWord(fa)

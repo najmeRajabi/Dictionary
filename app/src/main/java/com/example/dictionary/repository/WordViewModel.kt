@@ -1,6 +1,7 @@
 package com.example.dictionary.repository
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +20,9 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     fun getAll(): LiveData<List<Word>>? {
         return WordRepository.getAll()
     }
+    fun getWord(id: Int): Word? {
+        return WordRepository.getWord(id)
+    }
 
     fun findFa (fa :String): Word? {
         return WordRepository.findFa(fa)
@@ -32,11 +36,9 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     fun countWords (): LiveData<Int>? {
         return WordRepository.countWords()
     }
-    fun delete (id: Int) {
-        val word = getAll()?.value?.get(id)
-        if (word != null) {
-            WordRepository.delete(word)
-        }
+    fun delete (word: Word) {
+        Log.d("TAG", "delete: ${word.en}")
+        WordRepository.delete(word)
     }
     fun update (word: Word){
         WordRepository.update(word)
