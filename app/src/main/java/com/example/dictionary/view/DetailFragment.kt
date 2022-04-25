@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dictionary.R
 import com.example.dictionary.database.Word
@@ -36,6 +39,37 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val id = args.wordArg.minus(1)
+        initView( id )
+
+        binding.btnDeleteWord.setOnClickListener {
+            deleteWord(id)
+        }
+
+        binding.btnEditWord.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToAddWordFragment(id))
+        }
+
+    }
+
+    private fun deleteWord(id: Int) {
+        val alertDialog = AlertDialog.Builder(requireContext())
+
+        alertDialog.apply {
+            setTitle("مطمئن هستید؟؟")
+            setMessage("تمامی اطلاعات این واژه پاک خواهد شد!")
+            setPositiveButton("مطمئنم") { _, _ ->
+//                Toast.makeText(requireContext(),"deleted", Toast.LENGTH_SHORT).show()
+                vModel.delete(id)
+                activity?.onBackPressed()
+            }
+            setNegativeButton("نه") { _, _ ->
+                // dismiss
+            }
+
+        }.create().show()
+    }
+
+    private fun initView( id: Int) {
         var word :Word
         vModel.wordList?.observe(requireActivity()){
             word = it[id]

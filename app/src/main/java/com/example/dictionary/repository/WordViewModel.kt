@@ -3,11 +3,13 @@ package com.example.dictionary.repository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.dictionary.database.Word
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
 
     var wordList: LiveData<List<Word>>?
+    val position = MutableLiveData<Int>(1)
 
     init {
         WordRepository.initDB(app)
@@ -30,8 +32,11 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     fun countWords (): LiveData<Int>? {
         return WordRepository.countWords()
     }
-    fun delete (word: Word) {
-        WordRepository.delete(word)
+    fun delete (id: Int) {
+        val word = getAll()?.value?.get(id)
+        if (word != null) {
+            WordRepository.delete(word)
+        }
     }
     fun update (word: Word){
         WordRepository.update(word)
