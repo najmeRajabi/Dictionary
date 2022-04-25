@@ -6,6 +6,9 @@ import androidx.room.*
 @Dao
 interface WordDao {
 
+    @Query(" SELECT * FROM Word ")
+    fun getAll(): LiveData<List<Word>>
+
     @Query("SELECT COUNT(*) FROM Word")
     fun countAllWords(): LiveData<Int>
 

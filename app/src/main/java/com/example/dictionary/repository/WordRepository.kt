@@ -17,6 +17,10 @@ object WordRepository {
         wordDao = db?.wordDao()
     }
 
+    fun getAll(): LiveData<List<Word>>? {
+        return wordDao?.getAll()
+    }
+
     fun findFa (fa :String): Word? {
         return wordDao?.findFaWord(fa)
     }
