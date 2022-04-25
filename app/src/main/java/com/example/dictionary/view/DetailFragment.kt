@@ -38,7 +38,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val id = args.wordArg.minus(1)
+        val id = args.wordArg
         initView( id )
 
         binding.btnDeleteWord.setOnClickListener {
@@ -59,7 +59,7 @@ class DetailFragment : Fragment() {
             setMessage("تمامی اطلاعات این واژه پاک خواهد شد!")
             setPositiveButton("مطمئنم") { _, _ ->
 //                Toast.makeText(requireContext(),"deleted", Toast.LENGTH_SHORT).show()
-                vModel.delete(id)
+                vModel.delete(vModel.getWord(id)!!)
                 activity?.onBackPressed()
             }
             setNegativeButton("نه") { _, _ ->
@@ -70,14 +70,11 @@ class DetailFragment : Fragment() {
     }
 
     private fun initView( id: Int) {
-        var word :Word
-        vModel.wordList?.observe(requireActivity()){
-            word = it[id]
+        val word  = vModel.getWord(id)!!
             binding.txvEn.text = word.en
             binding.txvFa.text = word.fa
             binding.txvExample.text = word.example
             binding.txvSynonyms.text = word.synonyms
-        }
 
     }
 
