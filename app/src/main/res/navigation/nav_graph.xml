@@ -21,12 +21,7 @@
         android:id="@+id/addWordFragment"
         android:name="com.example.dictionary.view.AddWordFragment"
         android:label="fragment_add_word"
-        tools:layout="@layout/fragment_add_word" >
-        <argument
-            android:name="wordId"
-            app:argType="integer"
-            android:defaultValue="1" />
-    </fragment>
+        tools:layout="@layout/fragment_add_word" />
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.dictionary.view.DetailFragment"
@@ -38,7 +33,17 @@
             android:defaultValue="1"
              />
         <action
-            android:id="@+id/action_detailFragment_to_addWordFragment"
-            app:destination="@id/addWordFragment" />
+            android:id="@+id/action_detailFragment_to_editWordFragment"
+            app:destination="@id/editWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editWordFragment"
+        android:name="com.example.dictionary.view.EditWordFragment"
+        android:label="fragment_edit_word"
+        tools:layout="@layout/fragment_edit_word" >
+        <argument
+            android:name="wordId"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
 </navigation>
