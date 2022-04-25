@@ -15,6 +15,8 @@ object WordRepository {
     fun initDB(context: Context){
         db = AppDatabase.getAppDataBase(context)
         wordDao = db?.wordDao()
+
+        testData()
     }
 
     fun getAll(): LiveData<List<Word>>? {
@@ -38,5 +40,20 @@ object WordRepository {
     }
     fun update (word: Word){
         wordDao?.updateWord(word)
+    }
+
+    fun testData(){
+        wordDao?.insert(
+            Word(1,"fa 1", "en 1" , "synon 1", "example 1"),
+            Word(2,"fa 2", "en 2" , "synon 2", "example 2"),
+            Word(3,"fa 3", "en 3" , "synon 3", "example 3"),
+            Word(4,"fa 4", "en 4" , "synon 4", "example 4"),
+            Word(5,"fa 5", "en 5" , "synon 5", "example 5"),
+            Word(6,"fa 6", "en 6" , "synon 6", "example 6"),
+            Word(7,"fa 6", "en 6" , "synon 6", "example 6"),
+            Word(8,"fa 6", "en 6" , "synon 6", "example 6"),
+            Word(9,"fa 6", "en 6" , "synon 6", "example 6"),
+            Word(10,"fa 6", "en 6" , "synon 6", "example 6")
+        )
     }
 }
