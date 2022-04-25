@@ -7,9 +7,11 @@ import com.example.dictionary.database.Word
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
 
+    var wordList: LiveData<List<Word>>?
 
     init {
         WordRepository.initDB(app)
+        wordList = getAll()
     }
 
     fun getAll(): LiveData<List<Word>>? {
