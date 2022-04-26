@@ -11,10 +11,12 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
 
     var wordList: LiveData<List<Word>>?
     val position = MutableLiveData<Int>(1)
+    var countWord : LiveData<Int>?
 
     init {
         WordRepository.initDB(app)
         wordList = getAll()
+        countWord = countWords()
     }
 
     fun getAll(): LiveData<List<Word>>? {

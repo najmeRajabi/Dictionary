@@ -45,6 +45,10 @@ class HomeFragment : Fragment() {
 
     private fun initViews() {
 
+        vModel.countWord?.observe(requireActivity()){
+            binding.txvCount?.text = it.toString()
+        }
+
         val recyclerViewWord = binding.recyclerWord
         val adapter = WordAdaptor(arrayListOf(),{
                 word ->

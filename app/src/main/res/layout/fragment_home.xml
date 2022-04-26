@@ -7,12 +7,9 @@
     tools:context=".view.HomeFragment">
 
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <TextView
@@ -52,12 +49,42 @@
         <SearchView
             android:id="@+id/search_view_home"
             style="@style/txv_home_style"
-            android:minHeight="54dp"
             android:background="@drawable/bg_circle"
+            android:minHeight="54dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imv_change_mode" />
 
+
+        <TextView
+            android:id="@+id/txv_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="18dp"
+            android:text="@string/count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view_home" />
+
+        <TextView
+            android:id="@+id/txv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="@string/_0"
+            app:layout_constraintBottom_toBottomOf="@+id/txv_count_text"
+            app:layout_constraintEnd_toStartOf="@id/txv_count_text"
+            app:layout_constraintTop_toTopOf="@+id/txv_count_text" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:alpha="0.1"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txv_count_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_word"
@@ -70,7 +97,7 @@
             app:layout_constraintBottom_toTopOf="@+id/fab_add_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view_home"
+            app:layout_constraintTop_toBottomOf="@id/txv_count_text"
             app:layout_constraintVertical_bias="0.120000005" />
 
 
@@ -93,6 +120,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.9" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

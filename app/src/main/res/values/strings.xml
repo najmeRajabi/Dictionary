@@ -13,4 +13,6 @@
     <string name="error_empty">\" یک کلمه بنویسید: \"</string>
     <string name="empty">خالی</string>
     <string name="link">link</string>
+    <string name="count">"تعداد لغات: "</string>
+    <string name="_0">0</string>
 </resources>
