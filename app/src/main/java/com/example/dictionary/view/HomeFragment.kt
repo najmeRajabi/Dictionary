@@ -19,6 +19,7 @@ class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
     val vModel: WordViewModel by activityViewModels()
+    var faFlag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,7 @@ class HomeFragment : Fragment() {
 
         initViews()
 
+        // fab for add new word.....................
         binding.fabAddWord.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addWordFragment)
         }
@@ -45,10 +47,15 @@ class HomeFragment : Fragment() {
 
     private fun initViews() {
 
+        // counter word list .......................
         vModel.countWord?.observe(requireActivity()){
             binding.txvCount?.text = it.toString()
         }
 
+        // change search mode .....................
+        binding.imvChangeMode.setOnClickListener { changeSearchMode() }
+
+        // recycler view and adapter .........................
         val recyclerViewWord = binding.recyclerWord
         val adapter = WordAdaptor(arrayListOf(),{
                 word ->
@@ -71,6 +78,18 @@ class HomeFragment : Fragment() {
         }
 
         recyclerViewWord?.adapter = adapter
+    }
+
+    private fun changeSearchMode() {
+        if (faFlag){
+            binding.txvFaEnRight.text = getString(R.string.english)
+            binding.txvFaEnLeft.text = getString(R.string.persian)
+            faFlag = false
+        }else{
+            binding.txvFaEnRight.text = getString(R.string.persian)
+            binding.txvFaEnLeft.text = getString(R.string.english)
+            faFlag = true
+        }
     }
 
     private fun goToWebView(link: String) {
