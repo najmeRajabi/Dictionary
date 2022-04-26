@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
@@ -40,5 +43,15 @@
         <action
             android:id="@+id/action_detailFragment_to_addWordFragment"
             app:destination="@id/addWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.dictionary.view.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <argument
+            android:name="linkArg"
+            app:argType="string"
+            android:defaultValue='"https://www.google.com"' />
     </fragment>
 </navigation>

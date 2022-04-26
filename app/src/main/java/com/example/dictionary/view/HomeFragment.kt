@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dictionary.R
@@ -48,12 +50,13 @@ class HomeFragment : Fragment() {
                 word ->
             val id = word.id
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(id))
-//            findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
-        }){
+        }
+        ){
             word ->
             if (word.link == null){
                 Toast.makeText(requireContext(),"لینک موجود نیست!",Toast.LENGTH_SHORT).show()
-            }else{
+            }else
+            {
                 goToWebView(word.link)
             }
 
@@ -67,7 +70,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToWebView(link: String) {
-        TODO("Not yet implemented")
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToWebViewFragment(link))
     }
 
 }

@@ -47,7 +47,7 @@ object WordRepository {
 
     fun testData(){
         wordDao?.insert(
-            Word(1,"fa 1", "en 1" , "synon 1", "example 1","https://google.com"),
+            Word(1," درب ", "door" , "synon 1", "example 1","https://en.wikipedia.org/wiki/Door"),
             Word(2,"fa 2", "en 2" , "synon 2", "example 2"),
             Word(3,"fa 3", "en 3" , "synon 3", "example 3","https://google.com"),
             Word(4,"fa 4", "en 4" , "synon 4", "example 4"),
