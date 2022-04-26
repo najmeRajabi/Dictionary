@@ -58,7 +58,8 @@ class AddWordFragment : Fragment() {
             binding.edtAddPersian.text.toString(),
             binding.edtAddEnglish.text.toString(),
             binding.edtAddSynonyms.text.toString(),
-            binding.edtAddExample.text.toString()
+            binding.edtAddExample.text.toString(),
+            binding.edtAddLink.text.toString()
         )
         vModel.insert(word)
         activity?.onBackPressed()
@@ -71,7 +72,8 @@ class AddWordFragment : Fragment() {
             binding.edtAddPersian.text.toString(),
             binding.edtAddEnglish.text.toString(),
             binding.edtAddSynonyms.text.toString(),
-            binding.edtAddExample.text.toString()
+            binding.edtAddExample.text.toString(),
+            binding.edtAddLink.text.toString()
         )
         vModel.update(word)
         activity?.onBackPressed()
@@ -107,6 +109,9 @@ class AddWordFragment : Fragment() {
         }
         if (binding.edtAddExample.text.isNullOrBlank()){
             binding.edtAddExample.setText(getString(R.string.empty))
+        }
+        if (binding.edtAddLink.text.isNullOrBlank()){
+            binding.edtAddLink.setText(getString(R.string.empty))
         }
     }
 }

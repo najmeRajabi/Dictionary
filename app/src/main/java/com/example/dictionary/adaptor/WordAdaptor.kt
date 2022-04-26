@@ -3,6 +3,7 @@ package com.example.dictionary.adaptor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -14,7 +15,8 @@ import com.example.dictionary.database.Word
 typealias ClickHandler = (word: Word) -> Unit
 
 class WordAdaptor(var dataSet: ArrayList<Word> ,
-                  var clickHandler : ClickHandler):
+                  var clickHandler : ClickHandler,
+                  var clickHandlerLink : ClickHandler):
                   ListAdapter<Word, WordAdaptor.ViewHolder>(WordDiffCallback) {
 
 
@@ -28,7 +30,7 @@ class WordAdaptor(var dataSet: ArrayList<Word> ,
     }
 
     override fun onBindViewHolder(holder: WordAdaptor.ViewHolder, position: Int) {
-        holder.bind(getItem(position) , clickHandler)
+        holder.bind(getItem(position) , clickHandler, clickHandlerLink)
 
 
     }
@@ -47,14 +49,17 @@ class WordAdaptor(var dataSet: ArrayList<Word> ,
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val txvEnglish = view.findViewById<TextView>(R.id.txv_en_row)
         val txvFarsi = view.findViewById<TextView>(R.id.txv_fa_row)
+        val txvDetail = view.findViewById<TextView>(R.id.txv_more_row)
+        val imvLink = view.findViewById<ImageView>(R.id.imv_link)
 
 
 
-        fun bind (word: Word , clickHandler: ClickHandler){
+        fun bind (word: Word , clickHandler: ClickHandler , clickHandlerLink: ClickHandler){
 
             txvEnglish.text = word.en
             txvFarsi.text = word.fa
-            txvFarsi.setOnClickListener { clickHandler(word) }
+            txvDetail.setOnClickListener { clickHandler(word) }
+            imvLink.setOnClickListener { clickHandlerLink(word) }
         }
     }
 }

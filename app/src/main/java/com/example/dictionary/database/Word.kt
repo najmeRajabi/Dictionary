@@ -9,6 +9,7 @@ data class Word(
     val fa :String,
     val en:String,
     val synonyms :String,// مترادف
-    val example :String
+    val example :String,
+    val link :String? = null
 ) {
 }

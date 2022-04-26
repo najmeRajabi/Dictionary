@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="40dp"
+        android:maxLength="20"
         tools:text = "@string/english"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -20,16 +21,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="40dp"
+        android:maxLength="20"
         tools:text = "@string/persian"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txv_en_row"/>
+
+    <TextView
+        android:id="@+id/txv_more_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        android:maxLength="20"
+        android:text = "@string/detail"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:padding="5dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/blue_link"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txv_fa_row"/>
+
+    <ImageView
+        android:id="@+id/imv_link"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_baseline_language_24"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txv_more_row"
+        app:layout_constraintTop_toBottomOf="@+id/txv_fa_row" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txv_fa_row"
+        app:layout_constraintTop_toBottomOf="@id/txv_more_row"
         android:background="@color/black"
         android:alpha="0.3"/>
 

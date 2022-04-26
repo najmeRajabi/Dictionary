@@ -12,4 +12,5 @@
     <string name="detail">جزییات</string>
     <string name="error_empty">\" یک کلمه بنویسید: \"</string>
     <string name="empty">خالی</string>
+    <string name="link">link</string>
 </resources>
