@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dictionary.R
@@ -43,11 +44,19 @@ class HomeFragment : Fragment() {
     private fun initViews() {
 
         val recyclerViewWord = binding.recyclerWord
-        val adapter = WordAdaptor(arrayListOf()){
-            word ->
+        val adapter = WordAdaptor(arrayListOf(),{
+                word ->
             val id = word.id
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(id))
 //            findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
+        }){
+            word ->
+            if (word.link == null){
+                Toast.makeText(requireContext(),"لینک موجود نیست!",Toast.LENGTH_SHORT).show()
+            }else{
+                goToWebView(word.link)
+            }
+
         }
 
         vModel.wordList?.observe(requireActivity()){
@@ -55,6 +64,10 @@ class HomeFragment : Fragment() {
         }
 
         recyclerViewWord?.adapter = adapter
+    }
+
+    private fun goToWebView(link: String) {
+        TODO("Not yet implemented")
     }
 
 }
