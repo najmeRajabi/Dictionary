@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,125 +7,142 @@
     tools:context=".view.HomeFragment">
 
 
-        <TextView
-            android:id="@+id/txv_fa_en_left"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:minHeight="30dp"
-            android:text="@string/english"
-            app:layout_constraintEnd_toStartOf="@id/imv_change_mode"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imv_change_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_baseline_sync_alt_24"
-            app:layout_constraintEnd_toStartOf="@id/txv_fa_en_right"
-            app:layout_constraintStart_toEndOf="@id/txv_fa_en_left"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txv_fa_en_right"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:minHeight="30dp"
-            android:text="@string/persian"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imv_change_mode"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <SearchView
-            android:id="@+id/search_edtField_home"
-            style="@style/txv_home_style"
-            android:background="@drawable/bg_circle"
-            android:minHeight="54dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imv_change_mode" />
-
-        <TextView
-            android:id="@+id/txv_en"
-            style="@style/txv_home_style"
-            android:layout_width="328dp"
-            android:layout_height="52dp"
-            android:text="@string/english"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_edtField_home" />
-
-        <TextView
-            android:id="@+id/txv_fa"
-            style="@style/txv_home_style"
-            android:layout_width="337dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/persian"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txv_en"
-            app:layout_constraintTop_toBottomOf="@+id/search_edtField_home" />
-
-        <TextView
-            android:id="@+id/txv_synonyms"
-            style="@style/txv_home_style"
-            android:text="@string/synonyms"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_fa" />
-
-        <TextView
-            android:id="@+id/txv_example"
-            style="@style/txv_home_style"
-            android:text="@string/example"
-            android:verticalScrollbarPosition="defaultPosition"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_synonyms" />
-
-        <ImageButton
-            android:id="@+id/imv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            android:background="@drawable/bg_circle"
-            android:minWidth="30dp"
-            android:minHeight="30dp"
-            android:src="@drawable/before"
-            app:layout_constraintEnd_toStartOf="@+id/imv_next"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txv_example" />
-
-        <ImageButton
-            android:id="@+id/imv_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            android:background="@drawable/bg_circle"
-            android:minWidth="30dp"
-            android:minHeight="30dp"
-            android:src="@drawable/next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imv_back"
-            app:layout_constraintTop_toBottomOf="@id/txv_example" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add_word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/purple_200"
-            android:src="@drawable/add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/txv_fa_en_left"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:minHeight="30dp"
+                    android:text="@string/english"
+                    app:layout_constraintEnd_toStartOf="@id/imv_change_mode"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/imv_change_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_baseline_sync_alt_24"
+                    app:layout_constraintEnd_toStartOf="@id/txv_fa_en_right"
+                    app:layout_constraintStart_toEndOf="@id/txv_fa_en_left"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txv_fa_en_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:minHeight="30dp"
+                    android:text="@string/persian"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imv_change_mode"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/search_edtField_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginTop="15dp"
+                    app:startIconDrawable="@drawable/ic_baseline_search_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imv_change_mode"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/search_edt_home"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--        <ImageView-->
+                <!--            android:id="@+id/imv_search"-->
+                <!--            android:layout_width="30dp"-->
+                <!--            android:layout_height="30dp"-->
+                <!--            android:src="@drawable/ic_baseline_search_24"-->
+                <!--            app:layout_constraintBottom_toBottomOf="@+id/search_edtField_home"-->
+                <!--            app:layout_constraintStart_toStartOf="@+id/search_edtField_home"-->
+                <!--            app:layout_constraintTop_toBottomOf="@+id/imv_change_mode"-->
+                <!--            android:layout_marginStart="10dp" />-->
+
+                <TextView
+                    android:id="@+id/txv_count_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="18dp"
+                    android:text="@string/count"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/search_edtField_home" />
+
+                <TextView
+                    android:id="@+id/txv_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@+id/txv_count_text"
+                    app:layout_constraintEnd_toStartOf="@id/txv_count_text"
+                    app:layout_constraintTop_toTopOf="@+id/txv_count_text" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="18dp"
+                    android:alpha="0.1"
+                    android:background="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txv_count_text" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_word"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="18dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@+id/fab_add_word"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txv_count_text"
+                    app:layout_constraintVertical_bias="0.120000005" />
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_add_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="@string/detail"
+                    android:src="@drawable/add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.9" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

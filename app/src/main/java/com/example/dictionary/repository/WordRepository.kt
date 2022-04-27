@@ -24,7 +24,7 @@ object WordRepository {
     fun getWord(id: Int): Word? {
         return wordDao?.getWord(id)
     }
-    fun findWord (word: String): LiveData<Word>? {
+    fun findWord (word: String): LiveData<List<Word>>? {
         return wordDao?.findWord(word)
     }
 

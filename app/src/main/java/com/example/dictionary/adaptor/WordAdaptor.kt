@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -62,4 +63,8 @@ class WordAdaptor(var dataSet: ArrayList<Word> ,
             imvLink.setOnClickListener { clickHandlerLink(word) }
         }
     }
+
+//    fun filterWord (word: String): LiveData<List<Word>> {
+//        return
+//    }
 }

@@ -5,17 +5,24 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.example.dictionary.database.Word
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
 
     var wordList: LiveData<List<Word>>?
+    val wordFilter = MutableLiveData<String>()
+    var wordListFilter = Transformations.map(wordFilter){
+        wordFilter.value?.let { it1 -> findWord(it1) }
+    }
+
     val position = MutableLiveData<Int>(1)
     var countWord : LiveData<Int>?
 
     init {
         WordRepository.initDB(app)
         wordList = getAll()
+        wordFilter.value = ""
         countWord = countWords()
     }
     fun search (faFlag : Boolean , searchText: String): Word? {
@@ -24,6 +31,12 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
         }else {
             findEn(searchText)
         }
+    }
+    fun findWord (word: String): LiveData<List<Word>>? {
+        return WordRepository.findWord(word)
+    }
+    fun searchTextChanged(text: String){
+        wordFilter.value = text
     }
 
     fun getAll(): LiveData<List<Word>>? {

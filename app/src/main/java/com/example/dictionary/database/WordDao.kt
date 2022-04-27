@@ -30,7 +30,7 @@ interface WordDao {
     @Update
     fun updateWord (word: Word)
 
-    @Query("SELECT * FROM Word WHERE en in (:word) or fa in (:word) LIMIT 1")
-    fun findWord(word:String):LiveData<Word>?
+    @Query("SELECT * FROM Word WHERE en LIKE '%' || :word || '%' or fa LIKE '%' || :word || '%' ")
+    fun findWord(word:String): LiveData<List<Word>>?
 
 }
