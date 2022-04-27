@@ -46,15 +46,38 @@
             app:layout_constraintStart_toEndOf="@id/imv_change_mode"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <SearchView
-            android:id="@+id/search_view_home"
-            style="@style/txv_home_style"
-            android:background="@drawable/bg_circle"
-            android:minHeight="54dp"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_edtField_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="15dp"
+            app:startIconDrawable="@drawable/ic_baseline_search_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imv_change_mode" />
+            app:layout_constraintTop_toBottomOf="@id/imv_change_mode"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_edt_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imv_search"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:src="@drawable/ic_baseline_search_24"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/search_edtField_home"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/search_edtField_home"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imv_change_mode"-->
+<!--            android:layout_marginStart="10dp" />-->
 
         <TextView
             android:id="@+id/txv_count_text"
@@ -64,7 +87,7 @@
             android:layout_marginEnd="18dp"
             android:text="@string/count"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_view_home" />
+            app:layout_constraintTop_toBottomOf="@id/search_edtField_home" />
 
         <TextView
             android:id="@+id/txv_count"
@@ -77,10 +100,10 @@
             app:layout_constraintTop_toTopOf="@+id/txv_count_text" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
             android:alpha="0.1"
             android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,8 +111,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_word"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="18dp"

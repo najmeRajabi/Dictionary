@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import com.example.dictionary.database.AppDatabase
 import com.example.dictionary.database.Word
 import com.example.dictionary.database.WordDao
-import java.lang.Appendable
 
 object WordRepository {
 
@@ -24,6 +23,9 @@ object WordRepository {
     }
     fun getWord(id: Int): Word? {
         return wordDao?.getWord(id)
+    }
+    fun findWord (word: String): LiveData<Word>? {
+        return wordDao?.findWord(word)
     }
 
     fun findFa (fa :String): Word? {

@@ -18,6 +18,13 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
         wordList = getAll()
         countWord = countWords()
     }
+    fun search (faFlag : Boolean , searchText: String): Word? {
+        return if (faFlag){
+            findFa(searchText)
+        }else {
+            findEn(searchText)
+        }
+    }
 
     fun getAll(): LiveData<List<Word>>? {
         return WordRepository.getAll()

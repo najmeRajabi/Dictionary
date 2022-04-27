@@ -51,6 +51,26 @@
         app:layout_constraintStart_toEndOf="@+id/txv_more_row"
         app:layout_constraintTop_toBottomOf="@+id/txv_fa_row" />
 
+    <ImageView
+        android:id="@+id/imv_star"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_baseline_star_outline_24"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imv_link"
+        app:layout_constraintTop_toBottomOf="@+id/txv_fa_row" />
+
+    <ImageView
+        android:id="@+id/imv_play"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imv_star"
+        app:layout_constraintTop_toBottomOf="@+id/txv_fa_row" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
