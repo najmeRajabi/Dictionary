@@ -1,8 +1,10 @@
 package com.example.dictionary.repository
 
 import android.app.Application
+import android.widget.ImageView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.dictionary.R
 import com.example.dictionary.database.Word
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
@@ -52,4 +54,5 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     fun update (word: Word){
         WordRepository.update(word)
     }
+
 }

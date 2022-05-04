@@ -58,8 +58,8 @@ class HomeFragment : Fragment() {
             val id = word.id
             findNavController().navigate(HomeFragmentDirections.
             actionHomeFragmentToDetailFragment(id))
-        }
-        ){
+        },
+        {
             word ->
             if (word.link == null){
                 Toast.makeText(requireContext(),
@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             {
                 goToWebView(word.link)
             }
-        }
+        })
 
         binding.searchEdtHome.addTextChangedListener { text ->
             vModel.searchTextChanged(binding.searchEdtHome.text.toString())

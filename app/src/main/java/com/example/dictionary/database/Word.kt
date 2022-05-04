@@ -10,6 +10,7 @@ data class Word(
     val en:String,
     val synonyms :String,// مترادف
     val example :String,
-    val link :String? = null
+    val link :String? = null,
+    var isFave :Boolean = false
 ) {
 }
