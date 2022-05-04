@@ -1,6 +1,7 @@
 package com.example.dictionary.repository
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.dictionary.database.AppDatabase
 import com.example.dictionary.database.Word
@@ -28,6 +29,7 @@ object WordRepository {
         return wordDao.getWord(id)
     }
     fun findWord (word: String): LiveData<List<Word>> {
+//        Log.d("TAG", "findWord repo: ${wordDao.findWord(word).value}")
         return wordDao.findWord(word)
     }
 

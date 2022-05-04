@@ -1,18 +1,22 @@
 package com.example.dictionary.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dictionary.R
 import com.example.dictionary.adaptor.WordAdaptor
 import com.example.dictionary.databinding.FragmentHomeBinding
+import com.example.dictionary.repository.WordRepository
 import com.example.dictionary.repository.WordViewModel
 
 class HomeFragment : Fragment() {
@@ -55,17 +59,23 @@ class HomeFragment : Fragment() {
         // change search mode .....................
         binding.imvChangeMode.setOnClickListener { changeSearchMode() }
 
+//        // search ........................
+//        val searchText = binding.searchEdtHome
+//        binding.searchEdtFieldHome.setOnClickListener{ vModel.search(faFlag ,searchText.toString()) }
+
         // recycler view and adapter .........................
         val recyclerViewWord = binding.recyclerWord
         val adapter = WordAdaptor(arrayListOf(),{
                 word ->
             val id = word.id
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(id))
+            findNavController().navigate(HomeFragmentDirections.
+            actionHomeFragmentToDetailFragment(id))
         }
         ){
             word ->
             if (word.link == null){
-                Toast.makeText(requireContext(),"لینک موجود نیست!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    "لینک موجود نیست!",Toast.LENGTH_SHORT).show()
             }else
             {
                 goToWebView(word.link)
@@ -73,11 +83,29 @@ class HomeFragment : Fragment() {
 
         }
 
-        vModel.wordList?.observe(requireActivity()){
-            adapter.submitList(it)
+
+
+        binding.searchEdtHome.addTextChangedListener { text ->
+            vModel.searchTextChanged(binding.searchEdtHome.text.toString())
+            vModel.wordList?.observe(requireActivity()){
+                adapter.submitList(it)
+                recyclerViewWord.adapter = adapter
+            }
+//            vModel.wordListFilter.observe(requireActivity()) {
+//                Log.d("TAG", "init getfilter = : ${it.value}")
+//                adapter.submitList(it?.value)
+//                recyclerViewWord.adapter = adapter
+//            }
+//            Toast.makeText(requireActivity(),vModel.wordListFilter.value.toString(),Toast.LENGTH_SHORT).show()
         }
 
-        recyclerViewWord?.adapter = adapter
+        vModel.wordList?.observe(requireActivity()){
+            adapter.submitList(it)
+            recyclerViewWord.adapter = adapter
+        }
+
+
+        recyclerViewWord.adapter = adapter
     }
 
     private fun changeSearchMode() {
