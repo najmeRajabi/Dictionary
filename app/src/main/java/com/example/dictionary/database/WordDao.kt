@@ -31,6 +31,6 @@ interface WordDao {
     fun updateWord (word: Word)
 
     @Query("SELECT * FROM Word WHERE en LIKE '%' || :word || '%' or fa LIKE '%' || :word || '%' ")
-    fun findWord(word:String): LiveData<List<Word>>?
+    fun findWord(word:String): LiveData<List<Word>>
 
 }

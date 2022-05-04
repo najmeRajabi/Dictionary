@@ -9,46 +9,49 @@ import com.example.dictionary.database.WordDao
 object WordRepository {
 
     private var db : AppDatabase? = null
-    private var wordDao : WordDao? = null
+//    private var wordDao : WordDao? = null
+
+    lateinit var wordDao : WordDao
+
 
     fun initDB(context: Context){
         db = AppDatabase.getAppDataBase(context)
-        wordDao = db?.wordDao()
+        wordDao = AppDatabase.getAppDataBase(context).wordDao()
 
         testData()
     }
 
-    fun getAll(): LiveData<List<Word>>? {
-        return wordDao?.getAll()
+    fun getAll(): LiveData<List<Word>> {
+        return wordDao.getAll()
     }
-    fun getWord(id: Int): Word? {
-        return wordDao?.getWord(id)
+    fun getWord(id: Int): Word {
+        return wordDao.getWord(id)
     }
-    fun findWord (word: String): LiveData<List<Word>>? {
-        return wordDao?.findWord(word)
+    fun findWord (word: String): LiveData<List<Word>> {
+        return wordDao.findWord(word)
     }
 
-    fun findFa (fa :String): Word? {
-        return wordDao?.findFaWord(fa)
+    fun findFa (fa :String): Word {
+        return wordDao.findFaWord(fa)
     }
-    fun findEn (en :String): Word? {
-        return wordDao?.findEnWord(en)
+    fun findEn (en :String): Word {
+        return wordDao.findEnWord(en)
     }
     fun insert (word: Word){
-        wordDao?.insert(word)
+        wordDao.insert(word)
     }
-    fun countWords (): LiveData<Int>? {
-        return wordDao?.countAllWords()
+    fun countWords (): LiveData<Int> {
+        return wordDao.countAllWords()
     }
     fun delete (word: Word) {
-        wordDao?.delete(word)
+        wordDao.delete(word)
     }
     fun update (word: Word){
-        wordDao?.updateWord(word)
+        wordDao.updateWord(word)
     }
 
     fun testData(){
-        wordDao?.insert(
+        wordDao.insert(
             Word(1," درب ", "door" , "synon 1", "example 1","https://en.wikipedia.org/wiki/Door"),
             Word(2,"fa 2", "en 2" , "synon 2", "example 2"),
             Word(3,"fa 3", "en 3" , "synon 3", "example 3","https://google.com"),

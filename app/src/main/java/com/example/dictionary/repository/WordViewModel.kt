@@ -13,7 +13,8 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     var wordList: LiveData<List<Word>>?
     val wordFilter = MutableLiveData<String>()
     var wordListFilter = Transformations.map(wordFilter){
-        wordFilter.value?.let { it1 -> findWord(it1) }
+//        wordFilter.value?.let { it1 -> findWord(it1)}
+        findWord(wordFilter.value!!)
     }
 
     val position = MutableLiveData<Int>(1)
@@ -25,14 +26,14 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
         wordFilter.value = ""
         countWord = countWords()
     }
-    fun search (faFlag : Boolean , searchText: String): Word? {
-        return if (faFlag){
-            findFa(searchText)
-        }else {
-            findEn(searchText)
-        }
-    }
-    fun findWord (word: String): LiveData<List<Word>>? {
+//    fun search (faFlag : Boolean , searchText: String): Word? {
+//        return if (faFlag){
+//            findFa(searchText)
+//        }else {
+//            findEn(searchText)
+//        }
+//    }
+    fun findWord (word: String): LiveData<List<Word>> {
         return WordRepository.findWord(word)
     }
     fun searchTextChanged(text: String){
@@ -46,12 +47,12 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
         return WordRepository.getWord(id)
     }
 
-    fun findFa (fa :String): Word? {
-        return WordRepository.findFa(fa)
-    }
-    fun findEn (en :String): Word? {
-        return WordRepository.findEn(en)
-    }
+//    fun findFa (fa :String): Word? {
+//        return WordRepository.findFa(fa)
+//    }
+//    fun findEn (en :String): Word? {
+//        return WordRepository.findEn(en)
+//    }
     fun insert (word: Word){
         WordRepository.insert(word)
     }
