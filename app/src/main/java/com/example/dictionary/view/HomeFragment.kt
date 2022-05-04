@@ -1,30 +1,24 @@
 package com.example.dictionary.view
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dictionary.R
 import com.example.dictionary.adaptor.WordAdaptor
 import com.example.dictionary.databinding.FragmentHomeBinding
-import com.example.dictionary.repository.WordRepository
 import com.example.dictionary.repository.WordViewModel
 
 class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
     val vModel: WordViewModel by activityViewModels()
-    var faFlag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,10 +51,6 @@ class HomeFragment : Fragment() {
             binding.txvCount?.text = it.toString()
         }
 
-        // change search mode .....................
-        binding.imvChangeMode.setOnClickListener { changeSearchMode() }
-
-
         // recycler view and adapter .........................
         val recyclerViewWord = binding.recyclerWord
         val adapter = WordAdaptor(arrayListOf(),{
@@ -92,18 +82,6 @@ class HomeFragment : Fragment() {
         vModel.wordList?.observe(requireActivity()){
             adapter.submitList(it)
             recyclerViewWord.adapter = adapter
-        }
-    }
-
-    private fun changeSearchMode() {
-        if (faFlag){
-            binding.txvFaEnRight.text = getString(R.string.english)
-            binding.txvFaEnLeft.text = getString(R.string.persian)
-            faFlag = false
-        }else{
-            binding.txvFaEnRight.text = getString(R.string.persian)
-            binding.txvFaEnLeft.text = getString(R.string.english)
-            faFlag = true
         }
     }
 

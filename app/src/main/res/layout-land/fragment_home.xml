@@ -12,40 +12,6 @@
             android:layout_height="match_parent">
 
 
-                <TextView
-                    android:id="@+id/txv_fa_en_left"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minHeight="30dp"
-                    android:text="@string/english"
-                    app:layout_constraintEnd_toStartOf="@id/imv_change_mode"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imv_change_mode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/ic_baseline_sync_alt_24"
-                    app:layout_constraintEnd_toStartOf="@id/txv_fa_en_right"
-                    app:layout_constraintStart_toEndOf="@id/txv_fa_en_left"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txv_fa_en_right"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minHeight="30dp"
-                    android:text="@string/persian"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/imv_change_mode"
-                    app:layout_constraintTop_toTopOf="parent" />
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/search_edtField_home"
@@ -57,7 +23,7 @@
                     app:startIconDrawable="@drawable/ic_baseline_search_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imv_change_mode"
+                    app:layout_constraintTop_toTopOf="parent"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -116,7 +82,8 @@
                     android:layout_marginStart="18dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="18dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
                     app:layout_constraintBottom_toTopOf="@+id/fab_add_word"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
