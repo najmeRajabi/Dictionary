@@ -30,6 +30,9 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_detail, container, false)
+
+        binding.viewModel = vModel
+
         return binding.root
     }
 
@@ -38,7 +41,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val id = args.wordArg
-        initView( id )
+        binding.id = id
 
         binding.btnDeleteWord.setOnClickListener {
             deleteWord(id)
@@ -66,15 +69,6 @@ class DetailFragment : Fragment() {
             }
 
         }.create().show()
-    }
-
-    private fun initView( id: Int) {
-        val word  = vModel.getWord(id)!!
-            binding.txvEn.text = word.en
-            binding.txvFa.text = word.fa
-            binding.txvExample.text = word.example
-            binding.txvSynonyms.text = word.synonyms
-
     }
 
 }

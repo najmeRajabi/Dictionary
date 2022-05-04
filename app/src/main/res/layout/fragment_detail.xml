@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.dictionary.repository.WordViewModel" />
+        <variable
+            name="id"
+            type="Integer" />
+
     </data>
 
     <ScrollView
@@ -26,7 +33,8 @@
 
             <TextView
                 android:id="@+id/txv_en"
-                android:text="@string/english"
+                android:text="@{viewModel.getWord(id).en}"
+                tools:text="@string/english"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_margin"
@@ -34,7 +42,8 @@
 
             <TextView
                 android:id="@+id/txv_fa"
-                android:text="@string/persian"
+                tools:text="@string/persian"
+                android:text="@{viewModel.getWord(id).fa}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txv_en"
@@ -42,7 +51,8 @@
 
             <TextView
                 android:id="@+id/txv_synonyms"
-                android:text="@string/synonyms"
+                tools:text="@string/synonyms"
+                android:text="@{viewModel.getWord(id).synonyms}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txv_fa"
@@ -50,7 +60,8 @@
 
             <TextView
                 android:id="@+id/txv_example"
-                android:text="@string/example"
+                tools:text="@string/example"
+                android:text="@{viewModel.getWord(id).example}"
                 android:verticalScrollbarPosition="defaultPosition"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
