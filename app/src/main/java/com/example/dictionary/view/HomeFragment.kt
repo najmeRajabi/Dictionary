@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -29,7 +30,11 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding = DataBindingUtil.inflate<FragmentHomeBinding?>(layoutInflater,
+            R.layout.fragment_home, container , false).apply {
+                lifecycleOwner = viewLifecycleOwner
+        }
+        binding.viewModel = vModel
         return binding.root
     }
 
@@ -45,11 +50,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initViews() {
-
-        // counter word list .......................
-        vModel.countWord?.observe(requireActivity()){
-            binding.txvCount?.text = it.toString()
-        }
 
         // recycler view and adapter .........................
         val recyclerViewWord = binding.recyclerWord

@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.dictionary.R
 import com.example.dictionary.database.Word
 import com.example.dictionary.databinding.FragmentAddWordBinding
-import com.example.dictionary.databinding.FragmentDetailBinding
+
 import com.example.dictionary.repository.WordViewModel
 
 class AddWordFragment : Fragment() {
@@ -28,7 +29,10 @@ class AddWordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddWordBinding.inflate(layoutInflater, container, false)
+        binding = DataBindingUtil.inflate<FragmentAddWordBinding?>(layoutInflater,
+            R.layout.fragment_add_word, container, false).apply {
+                lifecycleOwner = viewLifecycleOwner
+        }
         return binding.root
     }
 

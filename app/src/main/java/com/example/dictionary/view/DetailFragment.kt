@@ -1,17 +1,16 @@
 package com.example.dictionary.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dictionary.R
-import com.example.dictionary.database.Word
 import com.example.dictionary.databinding.FragmentDetailBinding
 import com.example.dictionary.repository.WordViewModel
 
@@ -30,7 +29,7 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_detail, container, false)
         return binding.root
     }
 

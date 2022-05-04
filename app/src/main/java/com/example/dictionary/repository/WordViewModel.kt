@@ -3,7 +3,6 @@ package com.example.dictionary.repository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.dictionary.database.Word
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
