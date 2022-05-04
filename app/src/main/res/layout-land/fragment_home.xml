@@ -34,17 +34,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-                <!--        <ImageView-->
-                <!--            android:id="@+id/imv_search"-->
-                <!--            android:layout_width="30dp"-->
-                <!--            android:layout_height="30dp"-->
-                <!--            android:src="@drawable/ic_baseline_search_24"-->
-                <!--            app:layout_constraintBottom_toBottomOf="@+id/search_edtField_home"-->
-                <!--            app:layout_constraintStart_toStartOf="@+id/search_edtField_home"-->
-                <!--            app:layout_constraintTop_toBottomOf="@+id/imv_change_mode"-->
-                <!--            android:layout_marginStart="10dp" />-->
-
                 <TextView
                     android:id="@+id/txv_count_text"
                     android:layout_width="wrap_content"
@@ -103,12 +92,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.9" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

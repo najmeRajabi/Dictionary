@@ -9,7 +9,7 @@ import com.example.dictionary.database.Word
 class WordViewModel(app: Application):AndroidViewModel(app) {
 
     var wordList: LiveData<List<Word>>?
-    val position = MutableLiveData<Int>(1)
+    var splashFlag = true
     var countWord : LiveData<Int>?
 
     init {
