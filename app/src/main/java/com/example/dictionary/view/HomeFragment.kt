@@ -13,6 +13,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dictionary.R
 import com.example.dictionary.adaptor.WordAdaptor
 import com.example.dictionary.databinding.FragmentHomeBinding
@@ -59,9 +60,6 @@ class HomeFragment : Fragment() {
         // change search mode .....................
         binding.imvChangeMode.setOnClickListener { changeSearchMode() }
 
-//        // search ........................
-//        val searchText = binding.searchEdtHome
-//        binding.searchEdtFieldHome.setOnClickListener{ vModel.search(faFlag ,searchText.toString()) }
 
         // recycler view and adapter .........................
         val recyclerViewWord = binding.recyclerWord
@@ -80,32 +78,21 @@ class HomeFragment : Fragment() {
             {
                 goToWebView(word.link)
             }
-
         }
-
-
 
         binding.searchEdtHome.addTextChangedListener { text ->
             vModel.searchTextChanged(binding.searchEdtHome.text.toString())
-            vModel.wordList?.observe(requireActivity()){
-                adapter.submitList(it)
-                recyclerViewWord.adapter = adapter
-            }
-//            vModel.wordListFilter.observe(requireActivity()) {
-//                Log.d("TAG", "init getfilter = : ${it.value}")
-//                adapter.submitList(it?.value)
-//                recyclerViewWord.adapter = adapter
-//            }
-//            Toast.makeText(requireActivity(),vModel.wordListFilter.value.toString(),Toast.LENGTH_SHORT).show()
+            observeWordList(adapter , recyclerViewWord)
         }
 
+        observeWordList(adapter , recyclerViewWord)
+    }
+
+    private fun observeWordList(adapter: WordAdaptor, recyclerViewWord: RecyclerView) {
         vModel.wordList?.observe(requireActivity()){
             adapter.submitList(it)
             recyclerViewWord.adapter = adapter
         }
-
-
-        recyclerViewWord.adapter = adapter
     }
 
     private fun changeSearchMode() {

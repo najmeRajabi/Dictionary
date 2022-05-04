@@ -21,18 +21,10 @@ interface WordDao {
     @Delete
     fun delete(word: Word)
 
-    @Query("SELECT * FROM Word WHERE fa LIKE :fa")
-    fun findFaWord(fa : String):Word
-
-    @Query("SELECT * FROM Word WHERE en LIKE :en")
-    fun findEnWord(en : String):Word
-
     @Update
     fun updateWord (word: Word)
 
-//    @Query("SELECT * FROM Word WHERE en LIKE '%' || :word || '%' or fa LIKE '%' || :word || '%' ")
-
-    @Query("SELECT * FROM Word WHERE en LIKE '%' || :word ")
+    @Query("SELECT * FROM Word WHERE en LIKE '%' || :word || '%' or fa LIKE '%' || :word || '%' ")
     fun findWord(word:String): LiveData<List<Word>>
 
 

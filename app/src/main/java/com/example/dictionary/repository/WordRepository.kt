@@ -10,9 +10,7 @@ import com.example.dictionary.database.WordDao
 object WordRepository {
 
     private var db : AppDatabase? = null
-//    private var wordDao : WordDao? = null
-
-    lateinit var wordDao : WordDao
+    private lateinit var wordDao : WordDao
 
 
     fun initDB(context: Context){
@@ -29,15 +27,7 @@ object WordRepository {
         return wordDao.getWord(id)
     }
     fun findWord (word: String): LiveData<List<Word>> {
-//        Log.d("TAG", "findWord repo: ${wordDao.findWord(word).value}")
         return wordDao.findWord(word)
-    }
-
-    fun findFa (fa :String): Word {
-        return wordDao.findFaWord(fa)
-    }
-    fun findEn (en :String): Word {
-        return wordDao.findEnWord(en)
     }
     fun insert (word: Word){
         wordDao.insert(word)
@@ -52,7 +42,7 @@ object WordRepository {
         wordDao.updateWord(word)
     }
 
-    fun testData(){
+    private fun testData(){
         wordDao.insert(
             Word(1," درب ", "door" , "synon 1", "example 1","https://en.wikipedia.org/wiki/Door"),
             Word(2,"fa 2", "en 2" , "synon 2", "example 2"),
