@@ -50,7 +50,7 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun insert (word: Word){
-        viewModelScope.launch {
+        viewModelScope.launch (Dispatchers.IO){
             WordRepository.insert(word)
         }
     }
@@ -60,13 +60,13 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun delete (word: Word) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             WordRepository.delete(word)
         }
     }
 
     fun update (word: Word){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             WordRepository.update(word)
         }
     }
