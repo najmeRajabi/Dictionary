@@ -3,14 +3,18 @@ package com.example.dictionary.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.dictionary.database.AppDatabase
 import com.example.dictionary.database.Word
 import com.example.dictionary.database.WordDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 object WordRepository {
 
     private var db : AppDatabase? = null
     private lateinit var wordDao : WordDao
+    val ioDispatchers = Dispatchers.IO
 
 
     suspend fun initDB(context: Context){
@@ -24,22 +28,28 @@ object WordRepository {
         return wordDao.getAll()
     }
     suspend fun getWord(id: Int): Word {
-        return wordDao.getWord(id)
+            return wordDao.getWord(id)
     }
     fun findWord (word: String): LiveData<List<Word>> {
         return wordDao.findWord(word)
     }
     suspend fun insert (word: Word){
-        wordDao.insert(word)
+        withContext(ioDispatchers) {
+            wordDao.insert(word)
+        }
     }
     fun countWords (): LiveData<Int> {
         return wordDao.countAllWords()
     }
     suspend fun delete (word: Word) {
-        wordDao.delete(word)
+        withContext(ioDispatchers) {
+            wordDao.delete(word)
+        }
     }
     suspend fun update (word: Word){
-        wordDao.updateWord(word)
+        withContext(ioDispatchers) {
+            wordDao.updateWord(word)
+        }
     }
 
     private suspend fun testData(){

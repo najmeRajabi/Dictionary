@@ -42,7 +42,7 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun getWord(id: Int): MutableLiveData<Word> {
-        val result= MutableLiveData<Word>()
+        var result= MutableLiveData<Word>()
         viewModelScope.launch {
             result.value= WordRepository.getWord(id)
         }
@@ -50,7 +50,7 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun insert (word: Word){
-        viewModelScope.launch (Dispatchers.IO){
+        viewModelScope.launch {
             WordRepository.insert(word)
         }
     }
@@ -60,13 +60,13 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun delete (word: Word) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             WordRepository.delete(word)
         }
     }
 
     fun update (word: Word){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             WordRepository.update(word)
         }
     }
