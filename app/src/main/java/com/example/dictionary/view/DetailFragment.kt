@@ -32,6 +32,7 @@ class DetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_detail, container, false)
 
         binding.viewModel = vModel
+        binding.lifecycleOwner = this
 
         return binding.root
     }
@@ -61,7 +62,10 @@ class DetailFragment : Fragment() {
             setMessage("تمامی اطلاعات این واژه پاک خواهد شد!")
             setPositiveButton("مطمئنم") { _, _ ->
 //                Toast.makeText(requireContext(),"deleted", Toast.LENGTH_SHORT).show()
-                vModel.delete(vModel.getWord(id)!!)
+                vModel.getWord(id).observe(viewLifecycleOwner){
+                    vModel.delete(it)
+                }
+//                vModel.delete(vModel.getWord(id)!!)
                 activity?.onBackPressed()
             }
             setNegativeButton("نه") { _, _ ->

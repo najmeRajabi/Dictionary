@@ -23,7 +23,7 @@ object WordRepository {
     fun getAll(): LiveData<List<Word>> {
         return wordDao.getAll()
     }
-    fun getWord(id: Int): Word {
+    suspend fun getWord(id: Int): Word {
         return wordDao.getWord(id)
     }
     fun findWord (word: String): LiveData<List<Word>> {

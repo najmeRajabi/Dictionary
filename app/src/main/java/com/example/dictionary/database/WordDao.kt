@@ -10,7 +10,7 @@ interface WordDao {
     fun getAll(): LiveData<List<Word>>
 
     @Query(" SELECT * FROM Word WHERE id = :id ")
-    fun getWord (id: Int): Word
+    suspend fun getWord (id: Int): Word
 
     @Query("SELECT COUNT(*) FROM Word")
     fun countAllWords(): LiveData<Int>

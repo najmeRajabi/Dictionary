@@ -100,11 +100,13 @@ class AddWordFragment : Fragment() {
     }
 
     private fun initViews(id: Int) {
-        val word = vModel.getWord(id)
-        binding.edtAddEnglish.setText(word?.en)
-        binding.edtAddPersian.setText(word?.fa)
-        binding.edtAddExample.setText(word?.example)
-        binding.edtAddSynonyms.setText(word?.synonyms)
+        vModel.getWord(id).observe(viewLifecycleOwner){
+            binding.edtAddEnglish.setText(it?.en)
+            binding.edtAddPersian.setText(it?.fa)
+            binding.edtAddExample.setText(it?.example)
+            binding.edtAddSynonyms.setText(it?.synonyms)
+        }
+
     }
 
     fun optionalFiled(){

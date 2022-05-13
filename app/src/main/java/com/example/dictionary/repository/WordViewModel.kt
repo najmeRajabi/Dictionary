@@ -4,8 +4,11 @@ import android.app.Application
 import android.widget.ImageView
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.dictionary.R
 import com.example.dictionary.database.Word
+import kotlinx.coroutines.launch
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
 
@@ -35,8 +38,12 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
         return WordRepository.getAll()
     }
 
-    fun getWord(id: Int): Word {
-        return WordRepository.getWord(id)
+    fun getWord(id: Int): MutableLiveData<Word> {
+        val result= MutableLiveData<Word>()
+        viewModelScope.launch {
+            result.value= WordRepository.getWord(id)
+        }
+        return result
     }
 
     fun insert (word: Word){
