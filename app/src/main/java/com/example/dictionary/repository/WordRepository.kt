@@ -13,7 +13,7 @@ object WordRepository {
     private lateinit var wordDao : WordDao
 
 
-    fun initDB(context: Context){
+    suspend fun initDB(context: Context){
         db = AppDatabase.getAppDataBase(context)
         wordDao = AppDatabase.getAppDataBase(context).wordDao()
 
@@ -29,7 +29,7 @@ object WordRepository {
     fun findWord (word: String): LiveData<List<Word>> {
         return wordDao.findWord(word)
     }
-    fun insert (word: Word){
+    suspend fun insert (word: Word){
         wordDao.insert(word)
     }
     fun countWords (): LiveData<Int> {
@@ -42,7 +42,7 @@ object WordRepository {
         wordDao.updateWord(word)
     }
 
-    private fun testData(){
+    private suspend fun testData(){
         wordDao.insert(
             Word(1," درب ", "door" , "synon 1", "example 1","https://en.wikipedia.org/wiki/Door",false),
             Word(2,"fa 2", "en 2" , "synon 2", "example 2",null,false),

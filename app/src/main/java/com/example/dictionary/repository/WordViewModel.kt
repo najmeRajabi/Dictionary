@@ -17,7 +17,9 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     var countWord : LiveData<Int>?
 
     init {
-        WordRepository.initDB(app)
+        viewModelScope.launch {
+            WordRepository.initDB(app)
+        }
         wordList = getAll()
         countWord = countWords()
     }
@@ -47,7 +49,9 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun insert (word: Word){
-        WordRepository.insert(word)
+        viewModelScope.launch {
+            WordRepository.insert(word)
+        }
     }
 
     private fun countWords (): LiveData<Int> {

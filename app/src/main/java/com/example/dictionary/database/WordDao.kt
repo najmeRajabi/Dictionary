@@ -16,7 +16,7 @@ interface WordDao {
     fun countAllWords(): LiveData<Int>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert (vararg word: Word)
+    suspend fun insert (vararg word: Word)
 
     @Delete
     fun delete(word: Word)
