@@ -38,7 +38,7 @@ object WordRepository {
     suspend fun delete (word: Word) {
         wordDao.delete(word)
     }
-    fun update (word: Word){
+    suspend fun update (word: Word){
         wordDao.updateWord(word)
     }
 

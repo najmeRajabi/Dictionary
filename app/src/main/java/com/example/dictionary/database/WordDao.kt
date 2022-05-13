@@ -22,7 +22,7 @@ interface WordDao {
     suspend fun delete(word: Word)
 
     @Update
-    fun updateWord (word: Word)
+    suspend fun updateWord (word: Word)
 
     @Query("SELECT * FROM Word WHERE en LIKE '%' || :word || '%' or fa LIKE '%' || :word || '%' ")
     fun findWord(word:String): LiveData<List<Word>>

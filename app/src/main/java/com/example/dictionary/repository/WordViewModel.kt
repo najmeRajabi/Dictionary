@@ -66,7 +66,9 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun update (word: Word){
-        WordRepository.update(word)
+        viewModelScope.launch {
+            WordRepository.update(word)
+        }
     }
 
 }
