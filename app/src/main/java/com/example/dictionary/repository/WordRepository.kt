@@ -35,7 +35,7 @@ object WordRepository {
     fun countWords (): LiveData<Int> {
         return wordDao.countAllWords()
     }
-    fun delete (word: Word) {
+    suspend fun delete (word: Word) {
         wordDao.delete(word)
     }
     fun update (word: Word){

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.dictionary.R
 import com.example.dictionary.database.Word
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WordViewModel(app: Application):AndroidViewModel(app) {
@@ -59,7 +60,9 @@ class WordViewModel(app: Application):AndroidViewModel(app) {
     }
 
     fun delete (word: Word) {
-        WordRepository.delete(word)
+        viewModelScope.launch {
+            WordRepository.delete(word)
+        }
     }
 
     fun update (word: Word){

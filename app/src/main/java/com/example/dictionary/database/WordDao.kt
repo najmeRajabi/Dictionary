@@ -19,7 +19,7 @@ interface WordDao {
     suspend fun insert (vararg word: Word)
 
     @Delete
-    fun delete(word: Word)
+    suspend fun delete(word: Word)
 
     @Update
     fun updateWord (word: Word)

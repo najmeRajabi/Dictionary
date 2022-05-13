@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.dictionary.R
+import com.example.dictionary.database.Word
 import com.example.dictionary.databinding.FragmentDetailBinding
 import com.example.dictionary.repository.WordViewModel
 
@@ -19,6 +20,7 @@ class DetailFragment : Fragment() {
     val args: DetailFragmentArgs by navArgs()
     lateinit var binding: FragmentDetailBinding
     val vModel : WordViewModel by activityViewModels()
+    lateinit var word: Word
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +33,11 @@ class DetailFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_detail, container, false)
 
+//        val id = args.wordArg
+//        binding.id = id
         binding.viewModel = vModel
         binding.lifecycleOwner = this
+
 
         return binding.root
     }
@@ -43,6 +48,11 @@ class DetailFragment : Fragment() {
 
         val id = args.wordArg
         binding.id = id
+//        binding.word = vModel.getWord(id).value
+        vModel.getWord(id).observe(viewLifecycleOwner){
+            word = it
+            binding.word = it
+        }
 
         binding.btnDeleteWord.setOnClickListener {
             deleteWord(id)
@@ -61,15 +71,11 @@ class DetailFragment : Fragment() {
             setTitle("مطمئن هستید؟؟")
             setMessage("تمامی اطلاعات این واژه پاک خواهد شد!")
             setPositiveButton("مطمئنم") { _, _ ->
-//                Toast.makeText(requireContext(),"deleted", Toast.LENGTH_SHORT).show()
-                vModel.getWord(id).observe(viewLifecycleOwner){
-                    vModel.delete(it)
-                }
-//                vModel.delete(vModel.getWord(id)!!)
+                vModel.delete(word)
                 activity?.onBackPressed()
             }
             setNegativeButton("نه") { _, _ ->
-                // dismiss
+
             }
 
         }.create().show()
